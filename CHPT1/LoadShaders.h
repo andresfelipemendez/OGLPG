@@ -6,7 +6,7 @@ struct ShaderInfo
 {
 	GLenum type;
 	const char* filename;
-	GLuint Shader;
+	GLuint shader;
 
 };
 

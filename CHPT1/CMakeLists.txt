@@ -21,5 +21,40 @@ find_path(TINYGLTF_INCLUDE_DIRS "tiny_gltf.h")
 target_include_directories(CHPT1 PRIVATE ${TINYGLTF_INCLUDE_DIRS})
 
 
-target_link_libraries(CHPT1 GLEW::GLEW glfw glad::glad glm::glm imgui::imgui opengl)
+target_link_libraries(CHPT1 GLEW::GLEW glfw glad::glad glm::glm imgui::imgui)
 
+file(GLOB MODELS
+  "assets/models/*.glb"
+)
+
+
+file(GLOB SHADERS
+  "assets/shaders/*.*"
+)
+
+
+
+function (CopyFile ORIGINAL_TARGET FILE_PATH COPY_OUTPUT_DIRECTORY)
+    # Copy to the disk at build time so that when the header file changes, it is detected by the build system.
+    set(input ${FILE_PATH})
+    get_filename_component(file_name ${FILE_PATH} NAME)
+    set(output ${COPY_OUTPUT_DIRECTORY}/${file_name})
+    set(copyTarget ${ORIGINAL_TARGET}-${file_name})
+
+    add_custom_target(${copyTarget} DEPENDS ${output})
+    add_dependencies(${ORIGINAL_TARGET} ${copyTarget})
+    add_custom_command(
+            DEPENDS ${input}
+            OUTPUT ${output}
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different ${input} ${output}
+            COMMENT "Copying file to ${output}."
+    )
+endfunction ()
+
+foreach(SHADER IN LISTS SHADERS)
+    CopyFile(CHPT1 ${SHADER} shaders)
+endforeach()
+
+foreach(MODEL IN LISTS MODELS)
+    CopyFile(CHPT1 ${MODEL} models)
+endforeach()

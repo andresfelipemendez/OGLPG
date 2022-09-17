@@ -35,8 +35,8 @@ void init()
 
     ShaderInfo shaders[] =
     {
-        {GL_VERTEX_SHADER, "triangles.vert"},
-        {GL_FRAGMENT_SHADER, "triangles.frag"},
+        {GL_VERTEX_SHADER, "shaders/triangles.vert"},
+        {GL_FRAGMENT_SHADER, "shaders/triangles.frag"},
         {GL_NONE, NULL}
     };
     
@@ -48,6 +48,10 @@ void init()
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[ArrayBuffer]);
     glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(vPosition);
+}
+
+void display() {
+
 }
 
 int main()
