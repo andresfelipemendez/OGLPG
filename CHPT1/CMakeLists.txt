@@ -3,7 +3,6 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-find_package(opengl REQUIRED)
 find_package(glew REQUIRED)
 find_package(glfw3 CONFIG REQUIRED)
 find_package(glad CONFIG REQUIRED)

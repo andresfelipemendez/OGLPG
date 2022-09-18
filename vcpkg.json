@@ -5,7 +5,6 @@
   "dependencies": [
     "glad",
     "glew",
-    "gl3w",
     "glfw3",
     "imgui",
     "glm",

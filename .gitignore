@@ -1,2 +1,12 @@
 ﻿.vs
 out
+build
+CMakeCache.txt
+Makefile
+CHPT1/CMakeFiles
+vcpkg_installed
+CMakeFiles
+
+.vscode
+vcpkg-manifest-install.log
+cmake_install.cmake
