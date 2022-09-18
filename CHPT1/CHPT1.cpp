@@ -20,11 +20,11 @@ void init()
 {
     static const GLfloat vertices[NumVertices][2] =
     {
-        { -0.09f, -0.90f },
+        { -0.90f, -0.90f },
         {  0.85f, -0.90f },
-        { -0.09f,  0.85f },
-        {  0.09f, -0.85f },
-        {  0.09f,  0.90f },
+        { -0.90f,  0.85f },
+        {  0.90f, -0.85f },
+        {  0.90f,  0.90f },
         { -0.85f,  0.90f }
     };
 
@@ -51,6 +51,10 @@ void init()
 }
 
 void display() {
+    static const float black[] = { 0.0f,0.0f,0.0f,0.0f };
+    glClearBufferfv(GL_COLOR, 0, black);
+    glBindVertexArray(VAOs[Triangles]);
+    glDrawArrays(GL_TRIANGLES, 0, NumVertices);
 
 }
 
